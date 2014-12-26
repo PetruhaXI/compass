@@ -1,3 +1,5 @@
+It is NOT original django-south compass!!!
+
 django-south-compass
 ====================
 
