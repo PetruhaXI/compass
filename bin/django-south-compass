@@ -13,7 +13,7 @@ STATUSES = {
     'M': 'modified',
 }
 
-DIRECTIONS = {p
+DIRECTIONS = {
     'F': 'forward',
     'B': 'backward',
 }
