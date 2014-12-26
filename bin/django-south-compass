@@ -145,11 +145,10 @@ def main():
             if options.no_merge:
                 cmd += ' --no-merge'
 
-            f = file('.git/hooks/post-checkout', 'w')
-            f.write('#!/bin/bash\n')
-            f.write('\n')
-            f.write(cmd)
-            f.close()
+            with open('.git/hooks/post-checkout', 'w') as f:
+                f.write('#!/bin/bash\n')
+                f.write('\n')
+                f.write(cmd)
             os.system('chmod +x .git/hooks/post-checkout')
             print """
             Congrats! Django south compass has been installed to .git/hooks/post-checkout
