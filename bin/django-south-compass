@@ -13,7 +13,7 @@ STATUSES = {
     'M': 'modified',
 }
 
-DIRECTIONS = {
+DIRECTIONS = {p
     'F': 'forward',
     'B': 'backward',
 }
@@ -52,7 +52,7 @@ class MigrationList(object):
         # TODO: migrate to the last point of the group
         for key, group in groupby(self.items, lambda x: x.app):
             for item in group:
-                print item
+                print(item)
 
     def migrate_all(self):
         for item in self.items:
@@ -84,7 +84,7 @@ class Migration(object):
         cmd = '%s migrate %s %s' % (manage_cmd, self.app, self.migration)
         if not options.no_merge:
             cmd += " --merge"
-        print cmd
+        print(cmd)
         os.system(cmd)
         if self.direction == 'B':
             os.system('git reset HEAD %s %s%s/migrations' % (self.old, self.prefix, self.app))
@@ -151,19 +151,19 @@ def main():
             f.write(cmd)
             f.close()
             os.system('chmod +x .git/hooks/post-checkout')
-            print """
+            print ("""
             Congrats! Django south compass has been installed to .git/hooks/post-checkout
 
             Migrations added/deleted during checkout will now be automatically
             synced with the database.
 
             To uninstall, just edit or delete .git/hooks/post-checkout
-            """
+            """)
 
         else:
-            print 'Use `%s install` to install to current repository' % CMD
+            print('Use `%s install` to install to current repository' % CMD)
     else:
-        print 'Use `%s install` to install to current repository' % CMD
+        print('Use `%s install` to install to current repository' % CMD)
 
 if __name__ == '__main__':
     main()
